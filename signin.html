@@ -1,52 +1,71 @@
 <!doctype html>
-<html lang="en">
-  <head>
+<html lang="ru">
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.1.1">
-    <title>Signin Template · Bootstrap</title>
+    <title>Главная</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
+    <!--Бутстрап CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!--Шрифты-->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <!--Font Awesome-->
+    <script src="https://use.fontawesome.com/e75f7d66d5.js"></script>
+    <!--Свой стиль-->
+    <link href="static/styles/main.css" rel="stylesheet">
+</head>
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<body>
+<header>
+    <nav class="site-header sticky-top py-1">
+        <div class="container d-flex flex-column flex-md-row justify-content-left">
+            <a class="p-2" href="#">
+                <img class="rounded-circle border" width="30" height="30" src="static/images/logo.png"
+                     alt="Логотип">
+                <strong>МойбЛог</strong>
+            </a>
+            <a class="p-2 d-none d-md-inline-block" href="#">О себе</a>
+            <a class="p-2 d-none d-md-inline-block" href="#">Навигация</a>
+        </div>
+    </nav>
+</header>
+<main role="main">
+    <div class="container text-center">
+        <form class="form-signin">
+            <h1 class="h3 mb-3 font-weight-normal">Вход в систему</h1>
+            <label for="inputEmail" class="sr-only">E-Mail</label>
+            <input type="email" id="inputEmail" class="form-control" placeholder="E-Mail" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Пароль" required>
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Запомнить меня
+                </label>
+            </div>
+            <button class="btn btn-lg btn-dark btn-block" type="submit">Войти</button>
+        </form>
+    </div>
+</main>
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="static/styles/signin.css" rel="stylesheet">
-  </head>
-  <body class="text-center">
-    <form class="form-signin">
-<!--  <img class="mb-4" src="" alt="" width="72" height="72">-->
-  <h1 class="h3 mb-3 font-weight-normal">Вход в систему</h1>
-  <label for="inputEmail" class="sr-only">Email address</label>
-  <input type="email" id="inputEmail" class="form-control" placeholder="E-Mail" required autofocus>
-  <label for="inputPassword" class="sr-only">Password</label>
-  <input type="password" id="inputPassword" class="form-control" placeholder="Пароль" required>
-  <div class="checkbox mb-3">
-    <label>
-      <input type="checkbox" value="remember-me"> Запомнить меня
-    </label>
-  </div>
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
-  <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
-</form>
+<footer class="container-fluid text-center blog-footer">
+    <p>Контакты</p>
+    <div class="row justify-content-center">
+        <p class="mr-3">
+            <a href="tg.me" class="text-info"><i class="fa fa-telegram" aria-hidden="true"> </i>Telegram</a>
+        </p>
+        <p class="mr-3">
+            <a href="vk.com" class="text-info"><i class="fa fa-vk" aria-hidden="true"> </i>VK</a>
+        </p>
+        <p class="mr-3">
+            <a href="twitter.com" class="text-info"><i class="fa fa-twitter" aria-hidden="true"> </i>Twitter</a>
+        </p>
+    </div>
+    <p>
+        <a href="#" class="text-black-50"><i class="fa fa-arrow-up" aria-hidden="true"></i> Наверх</a>
+    </p>
+</footer>
 </body>
 </html>
+
