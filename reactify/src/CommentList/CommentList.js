@@ -25,9 +25,9 @@ function CommentList(props) {
     );
     return (
         <div className="container">
-            <div className="row justify-content-center my-3">
-                <div className="col-12 col-md-8 px-2">
-                    <ul className="list-group">
+            <div className="row justify-content-center my-3 mx-0">
+                <div className="col-12 col-md-8">
+                    <ul className="list-group w-100">
                         {listComments}
                     </ul>
                 </div>
