@@ -1,20 +1,29 @@
 import React from 'react'
 import './App.css';
 import Header from "../Header/Header";
-import PostList from "../PostList/PostList";
 import Footer from "../Footer/Footer";
-import CommentList from "../CommentList/CommentList";
-import Post from "../Post/Post";
+import {
+    BrowserRouter,
+    Switch,
+    Route
+} from 'react-router-dom'
+import MainView from "../MainView/MainView";
+import ContentView from "../ContentView/ContentView";
+import LoginView from "../LoginView/LoginView";
 
 function App() {
   return (
-    <div className="App">
-        <Header/>
-        <PostList/>
-        <Post/>
-        <CommentList/>
+      <BrowserRouter>
+        <div className="App">
+            <Header/>
+            <Switch>
+                <Route exact path="/" component={MainView}/>
+                <Route path="/post" component={ContentView}/>
+                <Route path="/login" component={LoginView}/>
+            </Switch>
+        </div>
         <Footer/>
-    </div>
+      </BrowserRouter>
   );
 }
 
