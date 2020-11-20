@@ -67,7 +67,6 @@ function Post(props) {
     }, []);
 
     return (
-        <main role="main">
             <div class="container py-3">
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-8 p-1">
@@ -83,7 +82,6 @@ function Post(props) {
                     </div>
                 </div>
             </div>
-        </main>
     );
 }
 
