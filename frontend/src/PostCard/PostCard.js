@@ -1,5 +1,6 @@
 import React from 'react'
 import './PostCard.css'
+import {Link} from "react-router-dom";
 
 function PostCard(props) {
     return (
@@ -8,7 +9,7 @@ function PostCard(props) {
                 <div className="card-body">
                     <h5 className="card-title">{props.post_title}</h5>
                     <p className="card-text">{props.post_text}</p>
-                    <a href={props.post_link} className="btn btn-primary">Читать далее...</a>
+                    <Link to="post" t className="btn btn-primary">Читать далее...</Link>
                 </div>
         </div>
     )
