@@ -2,17 +2,38 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
-# Create your models here.
-class Blog(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+class BlogUser(User):
+    profile_pic = models.ImageField()
 
 
 class Post(models.Model):
-    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
-    content = models.CharField(max_length=1000)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    creation_time = models.DateTimeField(auto_now_add=True)
+
+
+class PostPiece(models.Model):
+    order = models.IntegerField()
+    parent = models.ForeignKey(Post, on_delete=models.CASCADE)
+    description = models.CharField(max_length=200)
+
+    class Meta:
+        abstract = True
+
+
+class ImagePostPiece(PostPiece):
+    data = models.ImageField(upload_to="posts_images")
+
+
+class TextPostPiece(PostPiece):
+    data = models.CharField(max_length=1000)
+
+
+class CodePostPiece(PostPiece):
+    data = models.CharField(max_length=1000)
 
 
 class Comment(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    parent = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     content = models.CharField(max_length=1000)
+    creation_time = models.DateTimeField(auto_now_add=True)
