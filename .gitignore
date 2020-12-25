@@ -169,4 +169,7 @@ phpunit.phar
 /backend/web/index-test.php
 /backend/web/robots.txt
 
+# ignore python venv
+venv
+
 # End of https://www.toptal.com/developers/gitignore/api/vuejs,vue,yii2,phpstorm
