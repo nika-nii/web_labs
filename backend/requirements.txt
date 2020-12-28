@@ -4,4 +4,5 @@ markdown
 django-filter
 drf-yasg
 Pillow
+django-extensions
 psycopg2-binary>=2.8
