@@ -1,19 +1,19 @@
 from rest_framework import serializers
+from rest_framework.relations import PrimaryKeyRelatedField
 
-from logic.models import Post, BlogUser, Comment
+from logic.models import Post, BlogUser, Comment, PostPiece
 
 
-class PostBriefSerializer(serializers.ModelSerializer):
+class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = "__all__"
 
 
-class PostContentSerializer(serializers.ModelSerializer):
+class ContentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Post
+        model = PostPiece
         fields = "__all__"
-        depth = 1
 
 
 class BlogUserSerializer(serializers.ModelSerializer):

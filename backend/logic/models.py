@@ -16,9 +16,6 @@ class PostPiece(models.Model):
     parent = models.ForeignKey(Post, on_delete=models.CASCADE)
     description = models.CharField(max_length=200)
 
-    class Meta:
-        abstract = True
-
 
 class ImagePostPiece(PostPiece):
     data = models.ImageField(upload_to="posts_images")

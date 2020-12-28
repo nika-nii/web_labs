@@ -3,7 +3,7 @@ from rest_framework import routers, permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
-from api.views import BlogUserViewSet, CommentViewSet, PostBriefViewSet, PostContentViewSet
+from api.views import BlogUserViewSet, CommentViewSet, PostViewSet, ContentViewSet
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -18,8 +18,8 @@ schema_view = get_schema_view(
 )
 
 router = routers.SimpleRouter()
-router.register(r'posts_brief', PostBriefViewSet)
-router.register(r'posts', PostContentViewSet)
+router.register(r'contents', ContentViewSet)
+router.register(r'posts', PostViewSet)
 router.register(r'users', BlogUserViewSet)
 router.register(r'comments', CommentViewSet)
 
