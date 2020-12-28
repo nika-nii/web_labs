@@ -3,7 +3,7 @@ from django.db import models
 
 
 class BlogUser(User):
-    profile_pic = models.ImageField()
+    profile_pic = models.ImageField(upload_to="profile_images", null=True)
 
 
 class Post(models.Model):
@@ -15,18 +15,9 @@ class PostPiece(models.Model):
     order = models.IntegerField()
     parent = models.ForeignKey(Post, on_delete=models.CASCADE)
     description = models.CharField(max_length=200)
-
-
-class ImagePostPiece(PostPiece):
-    data = models.ImageField(upload_to="posts_images")
-
-
-class TextPostPiece(PostPiece):
-    data = models.CharField(max_length=1000)
-
-
-class CodePostPiece(PostPiece):
-    data = models.CharField(max_length=1000)
+    image_data = models.ImageField(upload_to="posts_images", null=True)
+    text_data = models.CharField(max_length=1000, null=True)
+    code_data = models.CharField(max_length=1000, null=True)
 
 
 class Comment(models.Model):
