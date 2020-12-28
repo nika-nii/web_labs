@@ -3,15 +3,30 @@ from django.http import HttpResponse
 import json
 
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.response import Response
 
-from api.serializers import PostSerializer
-from logic.models import Post
+from api.serializers import BlogUserSerializer, CommentSerializer, PostBriefSerializer, \
+    PostContentSerializer
+from logic.models import Post, BlogUser, Comment
 
 
-class PostViewSet(viewsets.ModelViewSet):
+class PostBriefViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
-    serializer_class = PostSerializer
+    serializer_class = PostBriefSerializer
+
+
+class PostContentViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostContentSerializer
+
+
+class BlogUserViewSet(viewsets.ModelViewSet):
+    queryset = BlogUser.objects.all()
+    serializer_class = BlogUserSerializer
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
 

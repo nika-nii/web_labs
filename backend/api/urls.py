@@ -3,15 +3,13 @@ from rest_framework import routers, permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
-from api.views import PostViewSet
-
+from api.views import BlogUserViewSet, CommentViewSet, PostBriefViewSet, PostContentViewSet
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="Snippets API",
+      title="Blog API",
       default_version='v1',
-      description="Test description",
-      terms_of_service="https://www.google.com/policies/terms/",
+      description="Blog REST API description",
       contact=openapi.Contact(email="contact@snippets.local"),
       license=openapi.License(name="BSD License"),
    ),
@@ -20,7 +18,10 @@ schema_view = get_schema_view(
 )
 
 router = routers.SimpleRouter()
-router.register(r'posts', PostViewSet)
+router.register(r'posts_brief', PostBriefViewSet)
+router.register(r'posts', PostContentViewSet)
+router.register(r'users', BlogUserViewSet)
+router.register(r'comments', CommentViewSet)
 
 urlpatterns = [
     url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
