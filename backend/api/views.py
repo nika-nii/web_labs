@@ -1,23 +1,20 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-import json
-
-from django.contrib.auth.models import User
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
-from rest_framework.response import Response
 
 from api.serializers import BlogUserSerializer, CommentSerializer, PostSerializer, ContentSerializer
 from logic.models import Post, BlogUser, Comment, PostPiece
 
 
 class ContentViewSet(viewsets.ModelViewSet):
-    queryset = PostPiece.objects.all()
     serializer_class = ContentSerializer
+    queryset = PostPiece.objects.order_by('order')
+    filterset_fields = ['parent']
 
 
 class PostViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.all()
+    queryset = Post.objects.order_by('creation_time')
     serializer_class = PostSerializer
+    filterset_fields = ['user']
 
 
 class BlogUserViewSet(viewsets.ModelViewSet):
@@ -28,4 +25,4 @@ class BlogUserViewSet(viewsets.ModelViewSet):
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-
+    filterset_fields = ['post', 'user']

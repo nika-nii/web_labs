@@ -18,10 +18,10 @@ schema_view = get_schema_view(
 )
 
 router = routers.SimpleRouter()
-router.register(r'contents', ContentViewSet)
-router.register(r'posts', PostViewSet)
-router.register(r'users', BlogUserViewSet)
-router.register(r'comments', CommentViewSet)
+router.register(r'contents', ContentViewSet, basename='contents')
+router.register(r'posts', PostViewSet, basename='posts')
+router.register(r'users', BlogUserViewSet, basename='users')
+router.register(r'comments', CommentViewSet, basename='comments')
 
 urlpatterns = [
     url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
