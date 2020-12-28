@@ -3,4 +3,5 @@ djangorestframework >=3.10
 markdown
 django-filter
 drf-yasg
+Pillow
 psycopg2-binary>=2.8
