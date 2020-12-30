@@ -160,3 +160,8 @@ REST_FRAMEWORK = {
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
 MEDIA_URL = '/media/'
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
