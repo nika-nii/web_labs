@@ -1,12 +1,14 @@
 import React from 'react'
 import Register from "../Register/Register";
 
-function RegisterView(props) {
-    return (
-        <main>
-            <Register/>
-        </main>
-    )
+class RegisterView extends React.Component {
+    render() {
+        return (
+            <main>
+                <Register/>
+            </main>
+        )
+    }
 }
 
 export default RegisterView;

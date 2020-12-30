@@ -1,12 +1,14 @@
 import React from 'react'
 import Login from "../Login/Login";
 
-function LoginView(props) {
-    return (
-        <main>
-            <Login/>
-        </main>
-    )
+class LoginView extends React.Component {
+    render() {
+        return (
+            <main>
+                <Login/>
+            </main>
+        )
+    }
 }
 
 export default LoginView;
