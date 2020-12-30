@@ -1,15 +1,41 @@
 import React from 'react'
 import PostsView from "../PostsView/PostsView";
+import ApiService from "../Services/ApiService";
+import { createBrowserHistory } from 'history'
+import {Link} from "react-router-dom";
 
 class MyPostsView extends React.Component {
+
+    apiservice = new ApiService();
+
+    state = {
+        user_id: null,
+    }
+
+    componentDidMount() {
+        this.apiservice
+            .getUserId()
+            .then((data) => {
+                if (data){
+                    this.setState({
+                        user_id: data.user_id,
+                    })
+                }
+            })
+    }
+
     render() {
-        // Получить инфу о том, залогинен пользователь или нет
-        // Получить id пользователя
-        // Вернуть или PostsView, или редирект
-        const user_id = 0;
-        return (
-            <PostsView user_id={user_id}/>
-        )
+        const user_id = this.state.user_id;
+        if (user_id){
+            return (
+                <PostsView user_id={user_id}/>
+            )
+        }else{
+            // const history = createBrowserHistory()
+            // history.push('/login')
+            // window.location.reload()
+            return <Link to="/login">Залогиньтесь</Link>
+        }
     }
 }
 

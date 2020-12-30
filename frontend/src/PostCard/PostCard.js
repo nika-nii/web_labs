@@ -10,7 +10,7 @@ class PostCard extends React.Component {
                 <div className="card-body">
                     <h5 className="card-title">{this.props.title}</h5>
                     <p className="card-text">{this.props.text}</p>
-                    <Link to={this.props.link} t className="btn btn-primary">Читать далее...</Link>
+                    <Link to={this.props.link} className="btn btn-primary">Читать далее...</Link>
                 </div>
             </div>
         )

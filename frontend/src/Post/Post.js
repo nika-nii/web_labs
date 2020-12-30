@@ -7,6 +7,7 @@ class Post extends React.Component {
     apiservice = new ApiService();
 
     state = {
+        id: null,
         user: null,
         title: null,
         text: null,
@@ -17,30 +18,31 @@ class Post extends React.Component {
 
     componentDidMount() {
         this.apiservice
-            .getPost(this.props.id)
+            .getPost(this.props.match.params.id)
             .then((data) => {
                 this.setState({
+                    id: data.id,
                     user: data.user,
                     title: data.title,
                     text: data.text,
                     header_image: data.header_image,
                     creation_time: data.creation_time,
-                })
+                });
+                this.apiservice
+                    .getContent(data.id)
+                    .then((data) => {
+                        this.setState({
+                            content: data,
+                        })
+                    })
+
             })
     }
 
-    renderItems(items) {
-        return items.map((item) => {
-            return (
-                <span key={item.id}>{item.name} </span>
-            )
-        })
-    }
-
     render() {
-        const {user, title, text, header_image, creation_time, content} = this.state
+        const {id, user, title, text, header_image, creation_time, content} = this.state
 
-        const rendered_content = content.map((piece) => {
+        const rendered_content = content ? content.map((piece) => {
                 if (piece.image_data) {
                     return <img className="mx-auto d-block rounded post-img m-3 w-100" src={piece.image_data}
                                 alt={piece.description}/>
@@ -65,7 +67,7 @@ class Post extends React.Component {
                 }
                 return <p>Неопознанный контент</p>
             }
-        )
+        ) : []
 
         return (
             <div className="container py-3">

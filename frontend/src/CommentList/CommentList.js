@@ -1,30 +1,30 @@
 import React from 'react';
 import './CommentList.css';
 import Comment from "../Comment/Comment";
-import logo from "../static/images/logo.png";
+import ApiService from "../Services/ApiService";
 
 class CommentList extends React.Component {
+
+    apiservice = new ApiService()
+
+    state = {
+        comments: null
+    }
+
+    componentDidMount() {
+        this.apiservice.getComments(this.props.post_id)
+                    .then((data) => {
+                        this.setState({
+                            comments: data
+                        })
+                    })
+    }
     render() {
-        const comments = [
-            {
-                user_name: "User 1",
-                user_picture: logo,
-                comment_text: "Не читал, но осуждаю",
-                comment_date: "20.01.2020"
-            },
-            {
-                user_name: "User 2",
-                user_picture: logo,
-                comment_text: "Прочитал, все равно осуждаю",
-                comment_date: "21.01.2020"
-            }
-        ]
-        const listComments = comments.map((comment) =>
+        const listComments = this.state.comments ? this.state.comments.map((comment) =>
             <li className="list-group-item d-flex">
-                <Comment user_name={comment.user_name} user_picture={comment.user_picture}
-                         comment_text={comment.comment_text} comment_date={comment.comment_date}/>
+                <Comment user={comment.user} content={comment.content} creation_time={comment.creation_time}/>
             </li>
-        );
+        ) : [];
         return (
             <div className="container px-0 mb-3">
                 <div className="row justify-content-center">

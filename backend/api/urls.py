@@ -4,7 +4,7 @@ from rest_framework import routers, permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from api.views import BlogUserViewSet, CommentViewSet, PostViewSet, ContentViewSet
+from api.views import BlogUserViewSet, CommentViewSet, PostViewSet, ContentViewSet, get_user_id
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -31,6 +31,7 @@ urlpatterns = [
    path('token/refresh/', 
          TokenRefreshView.as_view(), 
          name='token_refresh'),
+   path('get_my_id/', get_user_id),
    url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
    url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
    url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),

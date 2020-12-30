@@ -13,6 +13,7 @@ import LoginView from "../LoginView/LoginView";
 import MyPostsView from "../MyPostsView/MyPostsView";
 import AllPostsView from "../AllPostsView/AllPostsView";
 import RegisterView from "../RegisterView/RegisterView";
+import UserView from "../UserView/UserView";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
             <Switch>
                 <Route exact path="/" component={AllPostsView}/>
                 <Route exact path="/about" component={MyPostsView}/>
-                <Route path="/user/:id" component={PostsView}/>
+                <Route path="/user/:id" component={UserView}/>
                 <Route path="/post/:id" component={PostView}/>
                 <Route exact path="/login" component={LoginView}/>
                 <Route exact path="/register" component={RegisterView}/>

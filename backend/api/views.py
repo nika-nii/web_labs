@@ -1,3 +1,6 @@
+import json
+
+from django.http import HttpResponse
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 
@@ -26,3 +29,14 @@ class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     filterset_fields = ['post', 'user']
+
+
+def get_user_id(request):
+    print("Request user", request.user)
+    if request.user:
+        response_data = {
+            'user_id': request.user.pk,
+        }
+        return HttpResponse(json.dumps(response_data), content_type="application/json")
+    else:
+        return HttpResponse('Authorize first', status=401)
