@@ -8,6 +8,8 @@ class BlogUser(User):
 
 class Post(models.Model):
     user = models.ForeignKey(BlogUser, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    header_image = models.ImageField(upload_to="posts_images")
     creation_time = models.DateTimeField(auto_now_add=True)
 
 

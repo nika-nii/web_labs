@@ -7,9 +7,12 @@ import {
     Switch,
     Route
 } from 'react-router-dom'
-import MainView from "../MainView/MainView";
-import ContentView from "../ContentView/ContentView";
+import PostsView from "../PostsView/PostsView";
+import PostView from "../PostView/PostView";
 import LoginView from "../LoginView/LoginView";
+import MyPostsView from "../MyPostsView/MyPostsView";
+import AllPostsView from "../AllPostsView/AllPostsView";
+import RegisterView from "../RegisterView/RegisterView";
 
 function App() {
   return (
@@ -17,9 +20,12 @@ function App() {
         <div className="App">
             <Header/>
             <Switch>
-                <Route exact path="/" component={MainView}/>
-                <Route path="/post" component={ContentView}/>
-                <Route path="/login" component={LoginView}/>
+                <Route exact path="/" component={AllPostsView}/>
+                <Route exact path="/about" component={MyPostsView}/>
+                <Route path="/user/:id" component={PostsView}/>
+                <Route path="/post/:id" component={PostView}/>
+                <Route exact path="/login" component={LoginView}/>
+                <Route exact path="/register" component={RegisterView}/>
             </Switch>
         </div>
         <Footer/>

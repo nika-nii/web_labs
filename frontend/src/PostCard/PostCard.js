@@ -9,7 +9,7 @@ function PostCard(props) {
                 <div className="card-body">
                     <h5 className="card-title">{props.post_title}</h5>
                     <p className="card-text">{props.post_text}</p>
-                    <Link to="post" t className="btn btn-primary">Читать далее...</Link>
+                    <Link to={props.post_link} t className="btn btn-primary">Читать далее...</Link>
                 </div>
         </div>
     )
