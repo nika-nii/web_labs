@@ -26,6 +26,25 @@ export default class ApiService {
         return await this.getResource(`/posts/?user=${user_id}`)
     }
 
+    async getMyPosts() {
+        const accessToken = localStorage.getItem('access')
+        console.log(accessToken)
+        try{
+            const response = await axios({
+                method: 'get',
+                url: `${this._apiBase}/my_posts/`,
+                headers: {
+                    Authorization : `Bearer ${accessToken}`
+                }
+            });
+            return response.data;
+        }
+        catch (e){
+            console.log("Не получилось")
+            return null
+        }
+    }
+
     async getComments(post_id) {
         return await this.getResource(`/comments/?post=${post_id}`)
     }
@@ -42,22 +61,4 @@ export default class ApiService {
         return await this.getResource(`/contents/?parent=${id}`)
     }
 
-    async getUserId(){
-        const accessToken = localStorage.getItem('access')
-        console.log(accessToken)
-        try{
-            const response = await axios({
-                method: 'get',
-                url: `${this._apiBase}/get_my_id/`,
-                headers: {
-                    "Authorization" : `Bearer ${accessToken}`
-                }
-            });
-            return response.data;
-        }
-        catch (e){
-            console.log("Не получилось")
-            return null
-        }
-    }
 }

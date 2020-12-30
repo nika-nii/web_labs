@@ -7,7 +7,6 @@ import {
     Switch,
     Route
 } from 'react-router-dom'
-import PostsView from "../PostsView/PostsView";
 import PostView from "../PostView/PostView";
 import LoginView from "../LoginView/LoginView";
 import MyPostsView from "../MyPostsView/MyPostsView";

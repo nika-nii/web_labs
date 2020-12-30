@@ -1,40 +1,47 @@
 import React from 'react'
 import PostsView from "../PostsView/PostsView";
 import ApiService from "../Services/ApiService";
-import { createBrowserHistory } from 'history'
+import {createBrowserHistory} from 'history'
 import {Link} from "react-router-dom";
+import PostList from "../PostList/PostList";
+import AuthService from "../Services/AuthServices";
 
 class MyPostsView extends React.Component {
 
     apiservice = new ApiService();
+    authservice = new AuthService();
 
     state = {
-        user_id: null,
+        posts: null,
     }
 
     componentDidMount() {
         this.apiservice
-            .getUserId()
+            .getMyPosts()
             .then((data) => {
-                if (data){
+                if (data) {
                     this.setState({
-                        user_id: data.user_id,
+                        posts: data,
                     })
                 }
             })
     }
 
     render() {
-        const user_id = this.state.user_id;
-        if (user_id){
-            return (
-                <PostsView user_id={user_id}/>
-            )
+        if (this.authservice.isLogged()){
+            const posts = this.state.posts
+            if (posts)
+                return <PostList posts={this.state.posts}/>
+            else
+                return (
+                    <div className="spinner-border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                )
         }else{
-            // const history = createBrowserHistory()
-            // history.push('/login')
-            // window.location.reload()
-            return <Link to="/login">Залогиньтесь</Link>
+            const history = createBrowserHistory()
+            history.push('/login')
+            window.location.reload()
         }
     }
 }

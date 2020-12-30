@@ -3,9 +3,18 @@ import json
 from django.http import HttpResponse
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 
 from api.serializers import BlogUserSerializer, CommentSerializer, PostSerializer, ContentSerializer
 from logic.models import Post, BlogUser, Comment, PostPiece
+
+
+class MyPostsROViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = PostSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Post.objects.filter(user=self.request.user)
 
 
 class ContentViewSet(viewsets.ModelViewSet):

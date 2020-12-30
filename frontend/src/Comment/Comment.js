@@ -31,7 +31,7 @@ class Comment extends React.Component {
             <div className="container">
                 <div className="row">
                     <div className="col-2">
-                        <img className="img-thumbnail" src={this.state.user ? this.state.user.profile_pic : ""}
+                        <img className="img-thumbnail" src={this.state.user ? this.state.user.profile_pic: ""}
                              alt="Не загружено"/>
                     </div>
                     <div className="col-10">
