@@ -5,11 +5,11 @@ import {Link} from "react-router-dom";
 function PostCard(props) {
     return (
         <div className="card h-100">
-            <img className="post-img-top card-img-top" src={props.post_image} alt="Картинка у поста"/>
+            <img className="post-img-top card-img-top" src={props.header_image} alt="Картинка у поста"/>
                 <div className="card-body">
-                    <h5 className="card-title">{props.post_title}</h5>
-                    <p className="card-text">{props.post_text}</p>
-                    <Link to={props.post_link} t className="btn btn-primary">Читать далее...</Link>
+                    <h5 className="card-title">{props.title}</h5>
+                    <p className="card-text">{props.text}</p>
+                    <Link to={props.link} t className="btn btn-primary">Читать далее...</Link>
                 </div>
         </div>
     )

@@ -12,7 +12,7 @@ class PostSerializer(serializers.ModelSerializer):
 class ContentSerializer(serializers.ModelSerializer):
     class Meta:
         model = PostPiece
-        fields = "__all__"
+        exclude = ['order', 'parent']
 
 
 class BlogUserSerializer(serializers.ModelSerializer):

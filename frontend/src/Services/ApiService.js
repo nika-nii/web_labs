@@ -3,7 +3,6 @@ import axios from "axios"
 export default class ApiService {
 
     _apiBase = 'http://localhost:8000/api'
-    //_apiBase = 'http://localhost:8080'
 
     async getResource(url) {
         try{
@@ -20,39 +19,16 @@ export default class ApiService {
     }
 
 
-    async getAllAlbums() {
-        const res = await this.getResource('/albums/')
-        return res
+    async getAllPosts() {
+        return await this.getResource('/posts/')
     }
 
-    async getBestAlbums() {
-        const res = await this.getResource('/top_albums/')
-        return res
+    async getPosts(user_id) {
+        return await this.getResource(`/posts?user_id=${user_id}`)
     }
 
-    async getAlbum(id) {
-        const res = await this.getResource(`/albums/${id}/`)
-        return res
-    }
-
-    async getAllbands() {
-        const res = await this.getResource('/bands/')
-        return res
-    }
-
-    async getBand(id) {
-        const res = await this.getResource(`/bands/${id}/`)
-        return res
-    }
-
-    async searchBand(searchRequest) {
-        const res = await this.getResource(`/bands/?search=${searchRequest}`)
-        return res
-    }
-
-    async searchAlbum(searchRequest) {
-        const res = await this.getResource(`/albums/?search=${searchRequest}`)
-        return res
+    async getPost(id) {
+        return await this.getResource(`/posts/${id}`)
     }
 
     async getPreferences(){

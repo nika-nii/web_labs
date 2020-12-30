@@ -1,22 +1,31 @@
 import React, {useEffect} from 'react'
 import './Post.css'
-import image from '../static/images/post_3.jpg'
 
 function Post(props) {
-
     const post = props.post
 
     const content = post.content.map((piece) => {
-            switch (piece.type) {
-                case "text":
-                    return <p className="card-text">
-                        {piece.content}
-                    </p>
-                case "code":
-                    return <pre><code>{piece.content}</code></pre>
-                case "image":
-                    return <img className="mx-auto d-block rounded post-img m-3 w-100" src={piece.content}
-                                alt="Картинка в посте"/>
+            if (piece.image_data){
+                return <img className="mx-auto d-block rounded post-img m-3 w-100" src={piece.image_data}
+                                alt={piece.description}/>
+            }
+            if (piece.text_data){
+                return(
+                    <div>
+                        <h4>{piece.description}</h4>
+                        <p className="card-text">
+                            {piece.content}
+                        </p>
+                    </div>
+                )
+            }
+            if (piece.code_date){
+                return (
+                    <div>
+                        <h4>{piece.description}</h4>
+                        <pre><code>{piece.content}</code></pre>
+                    </div>
+                )
             }
             return <p>Неопознанный контент</p>
         }
